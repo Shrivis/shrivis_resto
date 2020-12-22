@@ -1,0 +1,181 @@
+{% load staticfiles%}
+<!-- model -->
+<section>
+    <div class="modal fade" id="booking" tabindex="-1" role="dialog" aria-labelledby="booking"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body cool-background">
+
+                    <!--alert section-->
+                    <div class="cool-background alert-warning bg-light text-center py-2" role="alert">
+                        {% for message in messages %}
+                        {{message}}
+                        {% endfor %}
+                    </div>
+                    <!--Booking-->
+                    <div class="container mt-2">
+                        <div class="row justify-content-center pb-2">
+                            <div class="col-12 text-center heading-section">
+                                <h3>Booking</h3>
+                                <form action="/reservation/" method="post">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label></label>
+                                                {% if user.is_authenticated %}
+                                                <input type="text" class="form-control" placeholder="Your Name"
+                                                       value="{{user.first_name}} {{user.last_name}}">
+                                                {% else %}
+                                                <input type="text" class="form-control" placeholder="Your Name">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label></label>
+                                                {% if user.is_authenticated %}
+                                                <input type="text" class="form-control" placeholder="Your Email" value="{{user.email}}">
+                                                {% else %}
+                                                <input type="text" class="form-control" placeholder="Your Email">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                {% if user.is_authenticated %}
+                                                <input type="text" class="form-control" placeholder="Phone"
+                                                       value="{{user.userprofile.phone}}">
+                                                {% else %}
+                                                <input type="text" class="form-control" placeholder="Phone">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="book_date" placeholder="Date">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="book_time" placeholder="Time">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <div class="select-wrap one-third">
+                                                    <select name="person" id="person" class="form-control">
+                                                        <option value="">Person</option>
+                                                        <option value="">1</option>
+                                                        <option value="">2</option>
+                                                        <option value="">3</option>
+                                                        <option value="">4+</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 mt-3">
+                                            <div class="form-group text-center">
+                                                <input type="submit" value="Make a Reservation"
+                                                       class="btn btn-primary submit py-2 px-5">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="cool-background modal-footer">
+                    <button type="button" class="btn btn-secondary submit" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!--alert section-->
+<!--<section>
+    <div class="alert-warning text-center pt-4 cool-background" role="alert">
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+    </div>
+</section>-->
+<!--reservation form-->
+<!--
+<section class="cool-background bg-light">
+    <div class="container">
+        <div class="row justify-content-center mb-2 pb-2">
+            <div class="col-md-12 p-2 p-md-2 pt-2 pt-md-0">
+                <form action="/reservation/" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label></label>
+                                {% if user.is_authenticated %}
+                                <input type="text" class="form-control" placeholder="Your Name"
+                                       value="{{user.first_name}} {{user.last_name}}">
+                                {% else %}
+                                <input type="text" class="form-control" placeholder="Your Name">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label></label>
+                                {% if user.is_authenticated %}
+                                <input type="text" class="form-control" placeholder="Your Email" value="{{user.email}}">
+                                {% else %}
+                                <input type="text" class="form-control" placeholder="Your Email">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {% if user.is_authenticated %}
+                                <input type="text" class="form-control" placeholder="Phone"
+                                       value="{{user.userprofile.phone}}">
+                                {% else %}
+                                <input type="text" class="form-control" placeholder="Phone">
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="book_date" placeholder="Date">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="book_time" placeholder="Time">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="select-wrap one-third">
+                                    <select name="person" id="person" class="form-control">
+                                        <option value="">Person</option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                        <option value="">4+</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-3">
+                            <div class="form-group text-center">
+                                <input type="submit" value="Make a Reservation"
+                                       class="btn btn-primary submit py-2 px-5">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>-->

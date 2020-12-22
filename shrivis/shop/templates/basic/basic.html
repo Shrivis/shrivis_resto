@@ -1,0 +1,133 @@
+<!doctype html>
+{% load staticfiles %}
+<html lang="en">
+<!-- Header -->
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="shrivisResto">
+    <meta name="author" content="Shrivis">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <script src="{% static 'js/main.js' %}"></script>
+    <style>{% block css %}{% endblock %}</style>
+</head>
+<body>
+<!-- Nav -->
+<nav class="navbar navbar-expand-md navbar-dark sticky-top" id="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" height = '70px'></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#content-nav" aria-controls="content-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="content-nav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="#" data-toggle="modal" data-target="#booking" class="nav-link">Booking
+                </a></li>
+                <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="#" data-toggle="modal" data-target="#history" class="nav-link">Orders
+                </a></li>
+                {% if user.is_authenticated %}
+                <li class="nav-item cta"><a href="/logout" class="nav-link">Logout</a></li>
+                {% else %}
+                <li class="nav-item"><a href="/register" class="nav-link">Register</a></li>
+                <li class="nav-item cta"><a href="#" data-toggle="modal" data-target="#login" class="nav-link">Login
+                </a></li>
+                {% endif %}
+                {% if request.path == "/" %}
+                <li class="nav-item cta mx-2" id="popcart" data-container="body" data-toggle="popover"
+                    data-placement="bottom" data-html="true"><a href="#" class="nav-link">Cart(<span id="cart">0</span>)
+                </a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END nav -->
+{% include "basic/login.html" %}
+{% include "basic/orders.html" %}
+{% include "basic/reservation.html" %}
+{% block body %}{% endblock %}
+<div class="spinner-border text-warning" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<!--Login Model-->
+<!--Connect-->
+<div class="container-fluid my-5">
+    <div class="row text-center padding">
+        <div class="col-12">
+            <h2>Connect</h2>
+        </div>
+        <div class="col-12 social padding">
+            <a href="https://www.facebook.com/Shrivis52"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com/Shrivis52"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/shrivis/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.github.com/shrivis/"><i class="fab fa-google-plus-g"></i></a>
+            <a href="https://www.youtube.com/shrivis/"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+</div>
+<!--Footer-->
+<footer>
+    <div class="container px-md-5 px-2">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <img src="{% static 'images/logo.png' %}" height = '87px'>
+                <hr class="light">
+                <p>+91 9958238579</p>
+                <p>shrivis@hotmail.com</p>
+                <p>B 86, Ground Floor, Connaught Place</p>
+                <p>Delhi, 110001</p>
+            </div>
+            <div class="col-md-4 mt-5">
+                <h2>Open Hours</h2>
+                <hr class="light">
+                <p>Weekday: 6am - 10pm</p>
+                <p>Saturday: 9am - 12pm</p>
+                <p>Sunday: 9am - 12pm
+            </div>
+            <div class="col-md-4 mt-5">
+                <h2>Newsletter</h2>
+                <hr class="light">
+                <p>Join the family and stay connected</p>
+                <form action="#" class="subscribe-form">
+                    <div class="form-group">
+                        <p><input type="text" class="text-center" placeholder="Enter email address"></p>
+                        <p><input type="submit" value="Subscribe" class="btn btn-primary submit px-3"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row text-center">
+            <div class="text-center col-12">
+                <hr class="light-100">
+                <h6>&copy; ShrivisResto.com</h6>
+            </div>
+        </div>
+    </div>
+</footer>
+<section>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/cart_window.js' %}"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Alex Brush' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Aladin' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Almendra SC' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Amita' rel='stylesheet'>
+    {% block js %}{% endblock %}
+</section>
+</body>
+</html>

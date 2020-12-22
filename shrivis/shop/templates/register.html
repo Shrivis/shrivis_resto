@@ -1,0 +1,98 @@
+{% extends 'basic/basic.html' %}
+{% block title %} register {% endblock %}
+{% load staticfiles%}
+{% block body %}
+<!-- Header -->
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_2.jpg' %});"
+         data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row slider-text align-items-end justify-content-center">
+            <div class="col-md-9 text-center">
+                <h1 class="mb-2 bread">Register</h1>
+                <p class="breadcrumbs">
+                    <nav aria-label="breadcrumb">
+                        <span class="breadcrumb-item"><a href="/">Home</a></span>
+                        <span class="breadcrumb-item active">Register</span>
+                    </nav>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--alert section-->
+<section>
+<div class="alert-warning cool-background text-center pt-4 bg-light" role="alert">
+  {% for message in messages %}
+  {{message}}
+  {% endfor %}
+</div>
+</section>
+<!-- registration form-->
+<section class="cool-background bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7 text-center">
+        <form action="/register/" method="post">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label></label>
+                <input type="text" class="form-control text-center" id="name" name="name" placeholder="First Name">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label></label>
+                <input type="text" class="form-control text-center" id="l_name" name="l_name" placeholder="Last Name">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control text-center" id="phone" name="phone" placeholder="Phone">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="text" class="form-control text-center" id="username" name="username" placeholder="Username">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="password" class="form-control text-center" id="password" name="password" placeholder="Password">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <input type="password" class="form-control text-center" id="password_2" name="password_2" placeholder="Confirm Password">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="email" class="form-control text-center" id="email" name="email" placeholder="Email">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="text" class="form-control text-center" id="address" name="address" placeholder="Address">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <input type="text" class="form-control text-center" id="address_2" name="address_2" placeholder="City">
+              </div>
+            </div>
+            <div class="col-md-12 mt-3">
+              <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary submit py-2 px-5">
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

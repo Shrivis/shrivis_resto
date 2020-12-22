@@ -1,0 +1,51 @@
+{% load staticfiles%}
+<section>
+    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="login"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body cool-background">
+
+                    <!--alert section-->
+                    <div class="cool-background alert-warning bg-light text-center py-2" role="alert">
+                        {% for message in messages %}
+                        {{message}}
+                        {% endfor %}
+                    </div>
+                    <!--login form-->
+                    <div class="container mt-2">
+                        <div class="row justify-content-center pb-2">
+                            <div class="col-12 text-center heading-section">
+                                <h3>Login</h3>
+                                <form action="/login/" method="post">
+                                    {% csrf_token %}
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control text-center" name="username" id="Username"
+                                                   placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control text-center"
+                                                   name="password" id="Password"
+                                                   placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" value="Submit" class="btn btn-primary submit px-5">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="cool-background modal-footer">
+                    <button type="button" class="btn btn-secondary submit" data-dismiss="modal">Close</button>
+                    <button type="button" onclick="location.href = '/register';" class="btn btn-primary submit">Sign
+                        Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

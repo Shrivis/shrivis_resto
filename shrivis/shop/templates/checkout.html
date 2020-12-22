@@ -1,0 +1,115 @@
+{% extends 'basic/basic.html' %}
+{% block title %} Checkout {% endblock %}
+{% load staticfiles%}
+{% block body %}
+<section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'images/bg_2.jpg' %});"
+         data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row slider-text align-items-end justify-content-center">
+            <div class="col-md-9 text-center">
+                <h1 class="mb-2 bread">Checkout</h1>
+                <p class="breadcrumbs">
+                    <nav aria-label="breadcrumb">
+                        <span class="breadcrumb-item"><a href="/">Home</a></span>
+                        <span class="breadcrumb-item active">Checkout</span>
+                    </nav>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="row py-5 d-flex justify-content-center">
+    <div class="col-lg-5">
+        <div class="">
+            <div class="heading-menu text-center mt-2">
+            <h3>Review Your Cart Items</h3>
+            </div>
+                <ul class="list-group" id="items"></ul>
+            <nav aria-label="breadcrumb">
+                <ol class="text-center align-center mt-3">
+                    <li class="btn btn-primary" style="font-size:18px;" aria-current="page">Your Cart
+                        Total Is<b>&nbsp;₹&nbsp;<span id="totalPrice"></span></b>. Thanks For Visiting Us!
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="ftco-animate">
+            <div class="heading-menu text-center mt-2">
+            <h3>Enter Details To Continue</h3>
+            </div>
+            <form method="post" action="/checkout/">
+                {% csrf_token %}
+                <input type="hidden" name="itemsJson" id="itemsJson">
+                <input type="hidden" name="amount" id="amount">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="address1" name="address1" placeholder="address 1">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="address2" name="address2" placeholder="address 2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="phone" placeholder="Phone" name="phone">
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Place Order" class="btn btn-primary py-3 px-5">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+if (localStorage.getItem('cart') == null) {
+    var cart = {};
+} else {
+    cart = JSON.parse(localStorage.getItem('cart'));
+
+}
+var sum = 0;
+var totalPrice = 0;
+
+if ($.isEmptyObject(cart)) {
+    //if object is empty
+    mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
+    $('#items').append(mystr);
+} else {
+    for (item in cart) {
+        let name = cart[item][1];
+        let qty = cart[item][0];
+        let itemPrice = cart[item][2];
+        sum = sum + qty;
+        totalPrice = totalPrice + qty * itemPrice;
+        mystr = `<li class="list-group-item d-flex justify-content-between align-items-center">
+                    ${name}
+                    <span class="badge badge-primary badge-pill">${qty}</span>
+                </li>`
+        $('#items').append(mystr);
+    }
+
+}
+
+document.getElementById('amount').innerHTML = sum;
+document.getElementById('totalPrice').innerHTML = totalPrice;
+$('#itemsJson').val(JSON.stringify(cart));
+{% if thank %}
+alert('Thanks for ordering with us. Your order is 40500{{p_id}}.');
+localStorage.clear();
+document.location = "/";
+{% endif %}
+$('#amount').val($('#totalPrice').html())
+</script>
+{% endblock %}
