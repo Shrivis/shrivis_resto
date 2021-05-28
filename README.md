@@ -1,13 +1,16 @@
 # shrivis_resto
 A Django Project
 
-get MERCHANT KEY and MID and update it in shop/views.py before running the project.
+get MERCHANT KEY and MID from paytm and update it in shop/views.py before running the project.
 
 Users:<br/>
 	Username: user1<br/>
 	Password: 1234<br/>
 	Username: user2<br/>
 	Password: 1234<br/>
+Admin:
+Username: shrivis<br/>
+Password: pi314159<br/>
 
 Potential Library Requirments<br/>
 	pillow(pip install pillow)
@@ -16,13 +19,13 @@ Use the following payment details for payment<br/>
 Mobile number: 77777 77777<br/>
 Password: Paytm12345<br/>
 OTP: 489871<br/>
-Note: Do not try to make Payment with an official Paytm account or valid Debit/Credit card.<br/>
+Note: Do not try to make Payment with an official Paytm account or valid Debit/Credit card as of now.<br/>
 
 How to run
 1. Open CMD, PowerShell or Terminal/CommandShell of any IDE
 2. Go to the root folder where manage.py file is located
 3. Run command "python manage.py runserver"
-4. Open any browser and goto 127.0.0.1:8000
+4. Open any browser and go to 127.0.0.1:8000
 5. You should be able to see the homepage
 
 View Admin Panel
@@ -42,12 +45,11 @@ Changing Admin Password
 3. Provide new password
 
 Points to keep in mind
-The project is in the early development stage and doesn't contain proper form validation. Please fill in all fields or it may result in an error.
-Payment gateway is for development purposes and must not be used for real-world payment as of now.
-Payment failure occurs very often in the development environment, to succeed, make sure you fill all required fields and try agian till it does.
+The payment gateway is for development purposes and must not be used for real-world payment as of now.
+Payment failure occurs very often in the development environment, to succeed, make sure you fill all required fields and try again till it does.
 for any query contact the writer.
 
-By Vishal Srivastav<br/>
-Email: vishalshrivastav52@gmail.com
-Email: shrivis@hotmail.com
-*************************************************************************END*************************************************************************
+By Vishal Srivastav aka Shrivis<br/>
+Email:<br/>
+vishalshrivastav52@gmail.com<br/>
+shrivis@hotmail.com
