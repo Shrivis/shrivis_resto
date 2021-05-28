@@ -8,7 +8,8 @@ Users:<br/>
 	Password: 1234<br/>
 	Username: user2<br/>
 	Password: 1234<br/>
-Admin:
+	
+Admin:<br/>
 Username: shrivis<br/>
 Password: pi314159<br/>
 
