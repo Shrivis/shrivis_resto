@@ -3,20 +3,20 @@ A Django Project
 
 get MERCHANT KEY and MID and update it in shop/views.py before running the project.
 
-Users:
-	Username: user1
-	Password: 1234
-	Username: user2
-	Password: 1234
+Users:<br/>
+	Username: user1<br/>
+	Password: 1234<br/>
+	Username: user2<br/>
+	Password: 1234<br/>
 
-Potential Library Requirments
+Potential Library Requirments<br/>
 	pillow(pip install pillow)
 
-Use the following payment details for payment
-Mobile number: 77777 77777
-Password: Paytm12345
-OTP: 489871
-Note: Do not try to make Payment with an official Paytm account or valid Debit/Credit card.
+Use the following payment details for payment<br/>
+Mobile number: 77777 77777<br/>
+Password: Paytm12345<br/>
+OTP: 489871<br/>
+Note: Do not try to make Payment with an official Paytm account or valid Debit/Credit card.<br/>
 
 How to run
 1. Open CMD, PowerShell or Terminal/CommandShell of any IDE
@@ -47,7 +47,7 @@ Payment gateway is for development purposes and must not be used for real-world 
 Payment failure occurs very often in the development environment, to succeed, make sure you fill all required fields and try agian till it does.
 for any query contact the writer.
 
-By Vishal Srivastav
+By Vishal Srivastav<br/>
 Email: vishalshrivastav52@gmail.com
 Email: shrivis@hotmail.com
 *************************************************************************END*************************************************************************
