@@ -45,7 +45,7 @@ Changing Admin Password
 2. Run following command "python manage.py changepassword <user_name>"
 3. Provide new password
 
-Points to keep in mind
+Points to keep in mind<br/>
 The payment gateway is for development purposes and must not be used for real-world payment as of now.
 Payment failure occurs very often in the development environment, to succeed, make sure you fill all required fields and try again till it does.
 for any query contact the writer.
